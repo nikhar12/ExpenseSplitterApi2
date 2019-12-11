@@ -1,5 +1,5 @@
 const express = require('express');
-
+const http = require('http');
 const route = require('./routes/route')
 const bodyParser = require('body-parser')
 const appConfig = require('./appconfig/appconfig')
@@ -21,8 +21,16 @@ route.setRouter(app);
 
 
 
-app.listen(appConfig.port,() => {
+/* app.listen(appConfig.port,() => {
     console.log("meowing on 3000");
     let db = mongoose.connect(appConfig.db, { useNewUrlParser: true });
     console.log(db);
-})
+}) */
+
+
+const server = http.createServer(app);
+ //start listening to http server
+ //console.log(appConfig);
+server.listen(appConfig.port);
+const socketLib = require("./libs/socketLib");
+const socketServer = socketLib.setServer(server);

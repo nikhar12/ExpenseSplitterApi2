@@ -7,7 +7,8 @@ let userSchema = new Schema({
     lastname: String,
     email: String,
     password: String,
-    mobile: Number
+    mobile: Number,
+    groups: []
 
 });
 

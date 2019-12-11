@@ -3,6 +3,8 @@ const express  = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const model = require('../../models/models-um/usermodel');
+const model1 = require('../../models/models-gm/groupmodel')
+const GroupModel = mongoose.model('group');
 
 var nodemailer = require('nodemailer');
 
@@ -34,7 +36,8 @@ let signup = (req,res) => {
         firstName: req.body.firstName,
         email: req.body.email,
         password: req.body.pass,
-        userid: shortid.generate()
+        userid: shortid.generate(),
+        groups: []
         
     });
 
@@ -100,9 +103,24 @@ let found=false;
     });
 }
 
+let getAllGroupsForUser = (req,res) =>{
+    let userid = req.params.userid;
+
+    GroupModel.find({ users: userid}, (err,result) => {
+        if(err)
+        {res.send(err)}
+        else{
+            res.send(result);
+
+        }
+    });
+};
+
+
 module.exports = {
     login: login,
     signup: signup,
     forgotpassword: forgotpassword,
-    getAllUsers: getAllUsers
+    getAllUsers: getAllUsers,
+    getAllGroupsForUser: getAllGroupsForUser
 }
