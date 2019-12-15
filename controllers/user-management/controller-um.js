@@ -110,10 +110,11 @@ let found=false;
 let getAllGroupsForUser = (req,res) =>{
     let userid = req.params.userid;
 
-    GroupModel.find({ users: userid}, (err,result) => {
+    GroupModel.find({ users: userid,createdby:userid}, (err,result) => {
         if(err)
         {res.send(err)}
         else{
+        console.log(result);
             res.send(result);
 
         }

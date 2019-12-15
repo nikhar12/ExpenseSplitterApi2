@@ -7,7 +7,7 @@ const shortid = require('shortid');
 let createGroup = (req,res) => {
 
     let groupname = req.body.groupname;
-    let createdat = req.body.createdat;
+    //let createdat = req.body.createdat;
     let createdby = req.body.createdby;
     let users = req.body.users;
 
@@ -18,7 +18,6 @@ let createGroup = (req,res) => {
     var gml = new GroupModel({
         groupid: shortid.generate(),
         groupname: groupname,
-        createdat: createdat,
         createdby: createdby,
         users: users
     });
