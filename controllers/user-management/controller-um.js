@@ -21,7 +21,7 @@ let login = (req,res) => {
         if(err)
         {console.log('incorrect email/password : '+err)}
         else {
-            res.send("login successfull " +result);
+            res.send(result);
         }
     })
 
