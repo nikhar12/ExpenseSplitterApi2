@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const shortid = require('shortid');
-const socketroom = shortid.generate();
+
 
 let expenseSchema = new Schema({
     expenseid: String,
@@ -17,7 +17,7 @@ let expenseSchema = new Schema({
     updatedby:[{userid:String, amount:Number}],
     deletedby:String,
     isarchived: Boolean,
-    users:[{userid:String, socketroom:socketroom}]
+    users:[{userid:String, socketroom:String}]
     
     
 
