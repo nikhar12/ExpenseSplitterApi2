@@ -17,11 +17,11 @@ let login = (req,res) => {
     let email = req.body.email;
     let password = req.body.password;
 
-    UserModel.findOne({email:email},(err,result) => {
+    UserModel.findOne({"email":email,"password":password},(err,result) => {
         if(err)
-        {console.log(err)}
+        {console.log('err: '+err)}
         else {
-            console.log(result);
+            console.log('res: '+result);
             res.send(result);
         }
     })
