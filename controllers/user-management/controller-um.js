@@ -16,7 +16,7 @@ let login = (req,res) => {
 
     let email = req.body.email;
     let pass = req.body.password;
-
+    
     UserModel.findOne({'email':email,'password':pass},(err,result) => {
         if(err)
         {console.log('incorrect email/password : '+err)}
