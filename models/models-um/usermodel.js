@@ -14,7 +14,7 @@ let userSchema = new Schema({
     pendingAmountPerUser: [{userid:String, amount:Number}]
 
 },{
-    collection: 'users'
+    collection: 'user'
 });
 
-mongoose.model('user',userSchema);
+mongoose.model('user',userSchema,'user');
