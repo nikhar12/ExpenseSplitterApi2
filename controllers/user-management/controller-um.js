@@ -15,12 +15,13 @@ const shortid = require('shortid');
 let login = (req,res) => {
 
     let email = req.body.email;
-    let pass = req.body.password;
-    
-    UserModel.findOne({'email':email,'password':pass},(err,result) => {
+    let password = req.body.password;
+
+    UserModel.findOne({'email':email,'password':password},(err,result) => {
         if(err)
-        {console.log('incorrect email/password : '+err)}
+        {console.log(err)}
         else {
+            console.log(result);
             res.send(result);
         }
     })
