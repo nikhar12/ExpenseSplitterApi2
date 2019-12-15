@@ -1,7 +1,7 @@
 const controller = require('../controllers/user-management/controller-um')
 
 const controllergm = require('../controllers/group-management/controller-gm')
-
+const controllerem = require('../controllers/expense-management/controller-em')
 
 let setRouter = (app) => {
 
@@ -16,6 +16,15 @@ let setRouter = (app) => {
     app.post(baseurl+'/group/create', controllergm.createGroup);
     app.get(baseurl+'/group/getall', controllergm.getAllGroups);
     app.post(baseurl+'/group/delete', controllergm.deleteGroup);
+    app.get(baseurl+'/group/:groupid',controllergm.getGroup);
+
+    app.get(baseurl+'/group/:groupid/expense',controllerem.getAllExpensesForGroup);
+    app.get(baseurl+'/expense/:expenseid', controllerem.getExpense)
+    
+    app.post(baseurl+'group/:groupid/expense/create',controllerem.AddExpense)
+    
+
+
 
 }
 

@@ -11,6 +11,8 @@ let createGroup = (req,res) => {
     let createdby = req.body.createdby;
     let users = req.body.users;
 
+    let nsp = req.body.nsp;
+
 
 
     var gml = new GroupModel({
@@ -61,9 +63,26 @@ let getAllGroups = (req,res) => {
     })
 };
 
+
+let getGroup = (req,res) =>{
+
+    const groupid = req.params.groupid;
+
+    GroupModel.find({'groupid': groupid},(err,result)=>{
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    });
+
+};
+
+
 module.exports = {
     createGroup:createGroup,
     getAllGroups:getAllGroups,
-    deleteGroup: deleteGroup
+    deleteGroup: deleteGroup,
+    getGroup:getGroup
 
 }

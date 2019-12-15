@@ -4,6 +4,35 @@ const ExpenseModel = mongoose.model('expense');
 const shortid = require('shortid');
 
 
+
+
+let getExpense= (req,res) => {
+
+    let expenseid = req.params.expenseid;
+
+    ExpenseModel.findOne({'expenseid': expenseid },(err,result)=>{
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    });
+};
+
+
+let getAllExpensesForGroup = (req,res) =>{
+    const groupid = req.parmas.groupid;
+
+    ExpenseModel.find({'groupid': groupid},(err,result)=>{
+
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    });
+};
+
 let AddExpense = (req,res) =>{
 
     let totalExpenseAmount = req.body.totalExpense;
@@ -11,8 +40,23 @@ let AddExpense = (req,res) =>{
     let expenseName = req.body.expensename;
     let groupid = req.body.groupid;
     let expenseid = shortid.generate();
-    let userid = req.body.userid;
+    let userid = req.body.createdby;
     let archived = false;
+   
+    let users = req.body.users;
+    let socketroom = shortid.generate();
+    let array = []
+    
+    for(let a in users)
+    {
+        let obj = {
+            user: a,
+            socketroom: socketroom
+        }
+        array.push(obj);
+    }
+    
+
 
     let eml = new ExpenseModel({
         expenseid: expenseid,
@@ -23,7 +67,8 @@ let AddExpense = (req,res) =>{
         createdby: userid,
         updatedby:[],
         deletedby:[],
-        archived:archived
+        isarchived:archived,
+        users:array
         
     });
 
@@ -34,13 +79,41 @@ let AddExpense = (req,res) =>{
             res.send(err);
 
         }else {
+
+        
+
+            let obj = {
+                userid: userid,
+                action: 'addExpense',
+                amount: totalExpenseAmount,
+                users: users
+                
+            }
+            let hist = new expenseHistorySchema({
+                expenseid: expenseid,
+                history: obj
+            });
+
+            hist.save((res,result)=>{
+                if(err){
+                    console.log('err history save'+err);
+                } else {
+                    console.log(result);
+                }
+            })
+
             res.send(result);
+
         }
     });
+
+    //expense history
 
 };
 
 
 module.exports = {
-    AddExpense:AddExpense
+    AddExpense:AddExpense,
+    getAllExpensesForGroup: getAllExpensesForGroup,
+    getExpense: getExpense
 }

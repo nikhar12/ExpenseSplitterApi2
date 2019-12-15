@@ -6,10 +6,10 @@ const appConfig = require('./appconfig/appconfig')
 const mongoose = require('mongoose');
 
 var app = require('express')();
-var server = require('http').Server(app);
+/* var server = require('http').Server(app);
 var io = require('socket.io')(server);
-
-server.listen(3000);
+ 
+server.listen(3000);*/
 let db = mongoose.connect(appConfig.db, { useNewUrlParser: true });
  
 //const app = new express()
@@ -17,13 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 
-/* 
-const server = http.createServer(app);
- //start listening to http server
- //console.log(appConfig);
-server.listen(appConfig.port);
-const socketLib = require("./libs/socketLib");
-const socketServer = socketLib.setServer(server); */
+ 
+
 
 
 app.use(function(req, res, next) {
@@ -35,7 +30,12 @@ app.use(function(req, res, next) {
 
 route.setRouter(app);
 
-
+const server = http.createServer(app);
+ //start listening to http server
+ //console.log(appConfig);
+server.listen(appConfig.port);
+const socketLib = require("./libs/socketLib");
+const socketServer = socketLib.setServer(server);
 
 /* app.listen(appConfig.port,() => {
     console.log("meowing on 3000");

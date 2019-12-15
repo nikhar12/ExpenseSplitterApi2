@@ -4,21 +4,89 @@ const mongoose = require('mongoose');
 const events = require('events');
 const eventEmitter = new events.EventEmitter();
 
+const ExpenseModel = mongoose.model('expense')
+const controllerem = require('../controllers/expense-management/controller-em')
+const gmail = require('../libs/mailLib');
+let userlist;
+let counter = 0;
+let my;
+let initiate = (req,res) =>{
+    my = io.of(req.params.nsp);
+    my.on('connection',(socket) => {
+
+        socket.on('add-expense',(data)=>{
+
+            socket.broadcast.emit('broadcast','New expense added. Please check.');
+           // gmail.gmail('nikharsharma12@gmail.com','firstEmail','This is the first email froim socket');
+           
+        })
+
+    });
+}
+/* let addExpense = (s,socketroom) => {
+
+    s.room = socketroom
+        // joining chat-group room.
+    s.join(s.room)
+    s.to(s.room).broadcast.emit('newExpenseAdded'); 
+}; */
+
 let setServer = (server) =>{
     var io = require('socket.io').listen(server);
     //let io = socketio.listen(server);
 
     let myIo = io.of('/');
-
+   
     myIo.on('connection',(socket) => {
-        
-        socket.on('hello',(data)=>{
-            console.log('hello: '+data);
+
+     
+
+        socket.on('join',(roomname)=>{
+
+            socket.join(roomname);
+            socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
+          
+            
+        })
+       /*    var room = socket.handshake['query']['r_var'];
+
+      socket.join(room);
+        console.log('user joined room #'+room);
+      
+        socket.on('disconnect', function() {
+          socket.leave(room)
+          console.log('user disconnected');
         });
+      
+        socket.on('chat message', function(msg){
+            console.log(msg);
+          io.to(room).emit('chat message', msg);
+        });
+
+ */
+
+    /*    socket.on('add-expense',(data)=>{
+
+           socket.broadcast.emit('broadcast','New expense added. Please check.');
+          // gmail.gmail('nikharsharma12@gmail.com','firstEmail','This is the first email froim socket');
+          
+       })
+
+       socket.on('edit-expense',(data)=>{
+
+        socket.broadcast.emit('broadcast','Expense Edited. Please check');
+    })
+
+    socket.on('delete-expense',(data)=>{
+
+        socket.broadcast.emit('broadcast','Expense deleted');
+    }) */
+       
     });
 };
 
 
 module.exports ={
-    setServer:setServer
+    setServer:setServer,
+    initiate: initiate
 }

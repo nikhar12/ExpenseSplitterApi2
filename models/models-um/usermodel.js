@@ -8,7 +8,10 @@ let userSchema = new Schema({
     email: String,
     password: String,
     mobile: Number,
-    groups: []
+    groups: [],
+    online: Boolean,
+    pendingAmount: Number,
+    pendingAmountPerUser: [{userid:String, amount:Number}]
 
 });
 

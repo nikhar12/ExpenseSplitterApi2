@@ -6,7 +6,8 @@ let groupSchema = new Schema({
     groupname: String,
     createdat: {type: Date, default: Date.now},
     createdby:String,
-    users:[]
+    users:[],
+    expenseid:[]
     
 
 },
