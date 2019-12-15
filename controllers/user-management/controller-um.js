@@ -21,9 +21,10 @@ let login = (req,res) => {
         if(err)
         {
             console.log(err);
-    }
+        }
         else {
-            console.log('res: '+result);
+           // console.log('res: '+result);
+           
             res.send(result);
         }
     })
