@@ -47,7 +47,7 @@ let signup = (req,res) => {
             res.send(err);
         }
         else {
-            res.send('signup done ');
+            res.send(user);
         }
     })
 }
