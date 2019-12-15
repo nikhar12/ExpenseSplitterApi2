@@ -19,9 +19,11 @@ let login = (req,res) => {
 
     UserModel.findOne({"email":email,"password":password},(err,result) => {
         if(err)
-        {console.log('err: '+err)}
+        {
+            console.log(err);
+    }
         else {
-            console.log('res: '+result);
+            //console.log('res: '+result);
             res.send(result);
         }
     })
