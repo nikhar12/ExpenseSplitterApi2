@@ -13,6 +13,8 @@ let userSchema = new Schema({
     pendingAmount: Number,
     pendingAmountPerUser: [{userid:String, amount:Number}]
 
+},{
+    collection: 'users'
 });
 
 mongoose.model('user',userSchema);
