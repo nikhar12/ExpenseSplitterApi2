@@ -15,7 +15,7 @@ let expenseSchema = new Schema({
     groupid: String,
     createdby: String,
     updatedby:[{userid:String, amount:Number}],
-    deletedby:String,
+    // deletedby:String,
     isarchived: Boolean,
     users:[{userid:String, socketroom:String}]
     
