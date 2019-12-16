@@ -25,7 +25,7 @@ let getAllUsersForAExpense = (req,res) => {
 
     const expenseid = req.body.expenseid;
 
-    ExpenseModel.find({'expenseid': expenseid}, (err,result)=>{
+    ExpenseModel.findOne({'expenseid': expenseid}, (err,result)=>{
         if(err)
         {
             res.send(err);
