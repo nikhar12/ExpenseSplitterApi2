@@ -10,12 +10,11 @@ let createGroup = (req,res) => {
     //let createdat = req.body.createdat;
     let createdby = req.body.createdby;
     //let users = req.body.users;
-
-    for( let u of req.body.users)
-    {
-        users.push(u);
-    }
-    let nsp = req.body.nsp;
+    let users=[];
+    let temp = req.body.users+'';
+    users = temp.split(',');
+    
+    
 
     console.log('users: ' + users);
 
