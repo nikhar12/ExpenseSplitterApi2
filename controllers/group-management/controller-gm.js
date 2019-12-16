@@ -42,7 +42,7 @@ let getAllUsersForAGroup = (req,res) => {
 
 let groupid = req.body.groupid;
 
-GroupModel.find({'groupid':groupid}, (err,result)=>{
+GroupModel.findOne({'groupid':groupid}, (err,result)=>{
     if(err)
     {
         res.send(err);
