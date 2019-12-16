@@ -24,7 +24,7 @@ let setRouter = (app) => {
     app.get(baseurl+'/expense/users', controllerem.getAllUsersForAExpense);
     //app.post(baseurl+'/expense/create')
     
-    app.post(baseurl+'group/:groupid/expense/create',controllerem.AddExpense)
+    app.post(baseurl+'/group/:groupid/expense/create',controllerem.AddExpense)
     
 
 
