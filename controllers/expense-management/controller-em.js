@@ -80,8 +80,6 @@ let AddExpense = (req,res) =>{
         groupid: groupid,
         expensename: expenseName,
         createdby: userid,
-        updatedby:[],
-        deletedby:[],
         isarchived:archived,
         users:array
         
