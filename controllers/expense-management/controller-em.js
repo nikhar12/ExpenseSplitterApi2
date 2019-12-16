@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const model = require('../../models/models-em/expensemodel')
+const historymodel = require('../../models/models-em/expensehistorymodel')
 const ExpenseModel = mongoose.model('expense');
 const ExpenseHistoryModel = mongoose.model('expensehistory')
 const shortid = require('shortid');
