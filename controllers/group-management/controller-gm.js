@@ -13,7 +13,7 @@ let createGroup = (req,res) => {
     let users=[];
     let temp = req.body.users+'';
     users = temp.split(',');
-    
+    users.push(createdby);
     
 
     console.log('users: ' + users);
