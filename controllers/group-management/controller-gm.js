@@ -9,11 +9,15 @@ let createGroup = (req,res) => {
     let groupname = req.body.groupname;
     //let createdat = req.body.createdat;
     let createdby = req.body.createdby;
-    let users = req.body.users;
+    //let users = req.body.users;
 
+    for( let u of req.body.users)
+    {
+        users.push(u);
+    }
     let nsp = req.body.nsp;
 
-
+    console.log('users: ' + users);
 
     var gml = new GroupModel({
         groupid: shortid.generate(),
