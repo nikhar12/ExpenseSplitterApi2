@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const model = require('../../models/models-em/expensemodel')
 const ExpenseModel = mongoose.model('expense');
+const ExpenseHistoryModel = mongoose.model('expensehistory')
 const shortid = require('shortid');
 
 
@@ -102,20 +103,22 @@ let AddExpense = (req,res) =>{
                 users: users
                 
             }
-            let hist = new expenseHistorySchema({
+            let hist = new ExpenseHistoryModel({
                 expenseid: expenseid,
                 history: obj
             });
 
             hist.save((res,result)=>{
                 if(err){
-                    console.log('err history save'+err);
+                    console.log(err);
+                    res.send(err);
                 } else {
                     console.log(result);
+                    res.send(result);
                 }
             })
 
-            res.send(result);
+           
 
         }
     });
