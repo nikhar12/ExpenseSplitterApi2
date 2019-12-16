@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
-const schema = mongoose.schema;
+const Schema = mongoose.Schema;
 
 /*
     action: addexpense,editexpense,adduser,removeuser
 */
-let expenseHistorySchema = new schema({ 
+let expenseHistorySchema = new Schema({ 
 
     expenseid: String,
-    history:[{userid:String, action:String, amount: Number,users:[], date: Date.now()}]
+    history:[{userid:String, action:String, amount: Number,users:[], date:{ type: Date, default: Date.now }}]
     
 },
 {
