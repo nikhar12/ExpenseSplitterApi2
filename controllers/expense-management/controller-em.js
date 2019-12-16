@@ -109,7 +109,7 @@ let AddExpense = (req,res) =>{
                 history: obj
             });
 
-            hist.save((res,result)=>{
+            hist.save((err,result)=>{
                 if(err){
                     console.log(err);
                     res.send(err);
