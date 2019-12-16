@@ -38,6 +38,22 @@ let createGroup = (req,res) => {
 
 };
 
+let getAllUsersForAGroup = (req,res) => {
+
+let groupid = req.body.groupid;
+
+GroupModel.find({'groupid':groupid}, (err,result)=>{
+    if(err)
+    {
+        res.send(err);
+    }
+    else
+    {
+        res.send(result);
+    }
+});
+
+};
 
 let deleteGroup = (req,res) =>{
 
@@ -85,6 +101,7 @@ module.exports = {
     createGroup:createGroup,
     getAllGroups:getAllGroups,
     deleteGroup: deleteGroup,
-    getGroup:getGroup
+    getGroup:getGroup,
+    getAllUsersForAGroup: getAllUsersForAGroup
 
 }

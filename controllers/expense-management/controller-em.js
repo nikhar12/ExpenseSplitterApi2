@@ -19,6 +19,21 @@ let getExpense= (req,res) => {
     });
 };
 
+let getAllUsersForAExpense = (req,res) => {
+
+    const expenseid = req.body.expenseid;
+
+    ExpenseModel.find({'expenseid': expenseid}, (err,result)=>{
+        if(err)
+        {
+            res.send(err);
+
+        }else{
+            res.send(result);
+        }
+    })
+
+};
 
 let getAllExpensesForGroup = (req,res) =>{
     const groupid = req.body.groupid;
@@ -115,5 +130,6 @@ let AddExpense = (req,res) =>{
 module.exports = {
     AddExpense:AddExpense,
     getAllExpensesForGroup: getAllExpensesForGroup,
-    getExpense: getExpense
+    getExpense: getExpense,
+    getAllUsersForAExpense: getAllUsersForAExpense
 }
