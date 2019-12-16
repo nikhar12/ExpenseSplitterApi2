@@ -94,10 +94,10 @@ let AddExpense = (req,res) =>{
             res.send(err);
 
         }else {
-
+res.send(result);
         
 
-            let obj = {
+           /*  let obj = {
                 userid: userid,
                 action: 'addExpense',
                 amount: totalExpenseAmount,
@@ -120,7 +120,7 @@ let AddExpense = (req,res) =>{
             })
 
            
-
+ */
         }
     });
 
