@@ -21,7 +21,7 @@ let getExpense= (req,res) => {
 
 
 let getAllExpensesForGroup = (req,res) =>{
-    const groupid = req.params.groupid;
+    const groupid = req.body.groupid;
 
     ExpenseModel.find({'groupid': groupid},(err,result)=>{
 
