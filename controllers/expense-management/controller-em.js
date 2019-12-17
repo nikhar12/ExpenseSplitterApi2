@@ -31,6 +31,7 @@ let getAllUsersForAExpense = (req,res) => {
             res.send(err);
 
         }else{
+            console.log('expenseobject: ' + result);
             res.send(result);
         }
     })
