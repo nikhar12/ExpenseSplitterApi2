@@ -68,9 +68,10 @@ let AddExpense = (req,res) =>{
     for(let a in users)
     {
         let obj = {
-            user: a,
+            userid: a,
             socketroom: socketroom
         }
+        console.log('obj.uerid'+obj.userid)
         array.push(obj);
     }
     
