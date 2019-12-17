@@ -67,7 +67,7 @@ let AddExpense = (req,res) =>{
     console.log('users: '+users);
     let temp = users.split(',');
   
-    for(let a in temp)
+    for(let a of temp)
     {
         let obj = {
             userid: a,
