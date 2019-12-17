@@ -66,6 +66,5 @@ console.log('joined user');
 
 
 module.exports ={
-    setServer:setServer,
-    initiate: initiate
+    setServer:setServer
 }
