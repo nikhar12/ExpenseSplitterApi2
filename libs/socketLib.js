@@ -44,7 +44,7 @@ let setServer = (server) =>{
         socket.on('join',(roomname)=>{
 
             socket.join(roomname);
-           // socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
+            socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
             io.sockets.in(socket.room).emit('broadcast','hello from server');
             
         })
