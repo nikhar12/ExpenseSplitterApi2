@@ -9,27 +9,6 @@ const controllerem = require('../controllers/expense-management/controller-em')
 const gmail = require('../libs/mailLib');
 let userlist;
 let counter = 0;
-let my;
-let initiate = (req,res) =>{
-    my = io.of(req.params.nsp);
-    my.on('connection',(socket) => {
-
-        socket.on('add-expense',(data)=>{
-
-            socket.broadcast.emit('broadcast','New expense added. Please check.');
-           // gmail.gmail('nikharsharma12@gmail.com','firstEmail','This is the first email froim socket');
-           
-        })
-
-    });
-}
-/* let addExpense = (s,socketroom) => {
-
-    s.room = socketroom
-        // joining chat-group room.
-    s.join(s.room)
-    s.to(s.room).broadcast.emit('newExpenseAdded'); 
-}; */
 
 let setServer = (server) =>{
     var io = require('socket.io').listen(server);
@@ -42,7 +21,7 @@ let setServer = (server) =>{
      
 
         socket.on('join',(roomname)=>{
-
+console.log('joined user');
             socket.join(roomname);
             socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
             io.sockets.in(socket.room).emit('broadcast','hello from server');
