@@ -21,10 +21,12 @@ let setServer = (server) =>{
      
 
         socket.on('join',(roomname)=>{
-console.log('joined user');
+        console.log('joined user');
+        
             socket.join(roomname);
-            socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
-            io.sockets.in(socket.room).emit('broadcast','hello from server');
+            io.to(roomname).emit('broadcast', 'muh me lo');
+            //socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
+            //io.sockets.in(socket.room).emit('broadcast','hello from server');
             
         })
        /*    var room = socket.handshake['query']['r_var'];
