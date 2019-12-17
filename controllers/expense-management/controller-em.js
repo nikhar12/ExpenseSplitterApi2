@@ -64,18 +64,18 @@ let AddExpense = (req,res) =>{
     let users = req.body.users;
     let socketroom = shortid.generate();
     let array = []
-    console.log('usdrs: '+users);
-    
+    console.log('users: '+users);
+
     for(let a in users)
     {
         let obj = {
             userid: a,
             socketroom: socketroom
         }
-        console.log('obj.uerid'+obj.userid)
+       
         array.push(obj);
     }
-    
+    console.log('array '+array);
 
 
     let eml = new ExpenseModel({
