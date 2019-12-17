@@ -64,6 +64,7 @@ let AddExpense = (req,res) =>{
     let users = req.body.users;
     let socketroom = shortid.generate();
     let array = []
+    console.log('usdrs: '+users);
     
     for(let a in users)
     {
