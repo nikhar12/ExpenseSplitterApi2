@@ -64,12 +64,11 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
                     obj.email = res.email;
                     obj.name = res.firstname;
                     obj.userid = res.userid;
+                    res2.push(obj);
                 }
             })
-            console.log('obj.email: '+obj.email);
-            console.log('obj.userid: '+obj.userid);
-            console.log('obj.firstname : '+obj.firstname);
-            res2.push(obj);
+         
+            
         }
         res.send(res2);
     }
