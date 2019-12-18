@@ -54,10 +54,11 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
         for(var userid of result.users)
         {
             let obj = {};
+            console.log('userid: '+userid);
             UserModel.findOne({'userid': userid}, (err,res)=>{
                 if(err)
                 {
-
+                    console.log('Usremodel err: '+err);
                 }else{
                     obj.email = res.email;
                     obj.name = res.firstname;
