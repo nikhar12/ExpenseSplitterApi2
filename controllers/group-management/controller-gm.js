@@ -60,6 +60,7 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
                 {
                     console.log('Usremodel err: '+err);
                 }else{
+                    console.log('res: '+res.email);
                     obj.email = res.email;
                     obj.name = res.firstname;
                     obj.userid = res.userid;
