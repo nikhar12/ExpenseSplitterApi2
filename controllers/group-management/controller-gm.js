@@ -52,9 +52,12 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
         let res2 = [];
         console.log('getAllUsersForAGroup :'+result);
        
-           
+            UserModel.find({'userid': {'$in': result.users}})
+            .then(user=>{
+                res.send(user);
+            })           
            // console.log('userid: '+userid);
-            UserModel.find({'userid': {'$in': result.users}}, (err,res)=>{
+            /* UserModel.find({'userid': {'$in': result.users}}, (err,res)=>{
                 if(err)
                 {
                     console.log('Usremodel err: '+err);
@@ -74,7 +77,7 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
                    
                    // console.log(res);
                 }
-            })
+            }) */
          
             
         
