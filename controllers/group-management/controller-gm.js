@@ -51,25 +51,25 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
     {
         let res2 = [];
         console.log('getAllUsersForAGroup :'+result);
-        for(var userid of result.users)
-        {
-            let obj = {};
-            console.log('userid: '+userid);
-            UserModel.findOne({'userid': userid}, (err,res)=>{
+       
+            let obj = {};   
+           // console.log('userid: '+userid);
+            UserModel.find({'userid': {'$in': result.users}}, (err,res)=>{
                 if(err)
                 {
                     console.log('Usremodel err: '+err);
                 }else{
+                   
                     console.log('res: '+res.email);
                     obj.email = res.email;
                     obj.name = res.firstname;
                     obj.userid = res.userid;
-                    res2.push(obj);
+                    console.log(res);
                 }
             })
          
             
-        }
+        
         res.send(res2);
     }
 });
