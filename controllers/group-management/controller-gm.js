@@ -59,14 +59,16 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
                 {
                     console.log('Usremodel err: '+err);
                 }else{
-                    let obj = {};   
+                
                     for(var o of res)
                     {
-                       // console.log('res: '+o.email);
+                        let obj = {};   
+                       
                         obj.email = o.email;
                         obj.name = o.firstname;
                         obj.userid = o.userid;
                         res2.push(obj);
+                         console.log('res: '+o.email);
                     }
                    
                    // console.log(res);
