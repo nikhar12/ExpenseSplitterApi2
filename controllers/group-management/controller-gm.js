@@ -59,6 +59,7 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
                 {
 
                 }else{
+                    obj.email = res.email;
                     obj.name = res.firstname;
                     obj.userid = res.userid;
                 }
