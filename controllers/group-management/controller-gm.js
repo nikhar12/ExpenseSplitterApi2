@@ -49,6 +49,7 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
     }
     else
     {
+        console.log('getAllUsersForAGroup :'+result);
         res.send(result);
     }
 });
