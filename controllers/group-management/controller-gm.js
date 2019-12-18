@@ -66,8 +66,9 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
                         obj.email = o.email;
                         obj.name = o.firstname;
                         obj.userid = o.userid;
+                        res2.push(obj);
                     }
-                    res2.push(obj);
+                   
                    // console.log(res);
                 }
             })
