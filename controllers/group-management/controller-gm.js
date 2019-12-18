@@ -64,7 +64,9 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
                     obj.userid = res.userid;
                 }
             })
-            console.log('obj: '+obj);
+            console.log('obj.email: '+obj.email);
+            console.log('obj.userid: '+obj.userid);
+            console.log('obj.firstname : '+obj.firstname);
             res2.push(obj);
         }
         res.send(res2);
