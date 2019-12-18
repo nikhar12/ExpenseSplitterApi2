@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const model = require('../../models/models-gm/groupmodel')
 const GroupModel = mongoose.model('group');
 const shortid = require('shortid');
-
+const UserModel = mongoose.model('user');
 
 let createGroup = (req,res) => {
 
@@ -49,8 +49,23 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
     }
     else
     {
+        let res2 = [];
         console.log('getAllUsersForAGroup :'+result);
-        res.send(result);
+        for(var userid of result.users)
+        {
+            let obj = {};
+            UserModel.findOne({'userid': userid}, (err,res)=>{
+                if(err)
+                {
+
+                }else{
+                    obj.name = res.firstname;
+                    obj.userid = res.userid;
+                }
+            })
+            res2.push(obj);
+        }
+        res.send(res2);
     }
 });
 
