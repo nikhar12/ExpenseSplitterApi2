@@ -70,6 +70,7 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
                         res2.push(obj);
                          console.log('res: '+o.email);
                     }
+                    res.send(res2);
                    
                    // console.log(res);
                 }
@@ -77,7 +78,7 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
          
             
         
-        res.send(res2);
+       
     }
 });
 
