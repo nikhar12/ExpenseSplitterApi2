@@ -24,7 +24,7 @@ let setServer = (server) =>{
         console.log('joined user');
         
             socket.join(roomname);
-            io.to(roomname).emit('broadcast', 'muh me lo');
+            io.to(roomname).emit('broadcast', 'You are all part pf this expense room');
             //socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
             //io.sockets.in(socket.room).emit('broadcast','hello from server');
             
