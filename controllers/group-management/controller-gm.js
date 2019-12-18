@@ -52,19 +52,23 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
         let res2 = [];
         console.log('getAllUsersForAGroup :'+result);
        
-            let obj = {};   
+           
            // console.log('userid: '+userid);
             UserModel.find({'userid': {'$in': result.users}}, (err,res)=>{
                 if(err)
                 {
                     console.log('Usremodel err: '+err);
                 }else{
-                   
-                    console.log('res: '+res.email);
-                    obj.email = res.email;
-                    obj.name = res.firstname;
-                    obj.userid = res.userid;
-                    console.log(res);
+                    let obj = {};   
+                    for(var o of res)
+                    {
+                       // console.log('res: '+o.email);
+                        obj.email = o.email;
+                        obj.name = o.firstname;
+                        obj.userid = o.userid;
+                    }
+                    res2.push(obj);
+                   // console.log(res);
                 }
             })
          
