@@ -38,6 +38,22 @@ let createGroup = (req,res) => {
 
 };
 
+let addNewUserToGroup = (req,res) => {
+    let groupid = req.body.id;
+    let selectedUsers = req.body.users.users;
+
+    GroupModel.update({'groupid': groupid}, {'$set': {
+        'users': selectedUsers
+    }},(err,result)=>{
+        if(err){
+            console.log(err);
+        } else {
+            console.log(result);
+            res.send(result);
+        }
+    });
+
+}
 let getAllUsersForAGroup = (req,res) => {
 
 let groupid = req.body.groupid;
@@ -134,6 +150,7 @@ module.exports = {
     getAllGroups:getAllGroups,
     deleteGroup: deleteGroup,
     getGroup:getGroup,
-    getAllUsersForAGroup: getAllUsersForAGroup
+    getAllUsersForAGroup: getAllUsersForAGroup,
+    addNewUserToGroup: addNewUserToGroup
 
 }

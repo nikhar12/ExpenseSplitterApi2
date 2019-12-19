@@ -18,6 +18,7 @@ let setRouter = (app) => {
     app.post(baseurl+'/group/delete', controllergm.deleteGroup);
     app.get(baseurl+'/group/:groupid',controllergm.getGroup);
     app.post(baseurl+'/group/getAllUsers',controllergm.getAllUsersForAGroup)
+    app.post(baseurl + '/group/addNewUser',controllergm.addNewUserToGroup);
 
     app.post(baseurl+'/group/expense',controllerem.getAllExpensesForGroup);
     app.get(baseurl+'/expense/:expenseid', controllerem.getExpense)
