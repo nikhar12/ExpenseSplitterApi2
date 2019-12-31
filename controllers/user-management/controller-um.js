@@ -23,7 +23,7 @@ let login = (req,res) => {
             console.log(err);
         }
         else {
-            console.log('Logion Func, result:  : '+result);
+            console.log('Login Func, result:  : '+result);
            
             res.send(result);
         }
@@ -54,6 +54,18 @@ let signup = (req,res) => {
             res.send(user);
         }
     })
+}
+
+let getUser = (req,res) => {
+    let id = req.query.id;
+
+    UserModel.findOne({'userid': id}, (err,result) => {
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    });
 }
 
 let getAllUsers = (req,res) => {
@@ -127,5 +139,6 @@ module.exports = {
     signup: signup,
     forgotpassword: forgotpassword,
     getAllUsers: getAllUsers,
-    getAllGroupsForUser: getAllGroupsForUser
+    getAllGroupsForUser: getAllGroupsForUser,
+    getUser: getUser
 }
