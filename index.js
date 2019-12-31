@@ -20,13 +20,13 @@ app.use(express.urlencoded({extended: true}));
  
 
 
-
+/* 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "ec2-35-154-144-121.ap-south-1.compute.amazonaws.com:3000");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
     next();
-});
+}); */
 
 route.setRouter(app);
 
