@@ -23,7 +23,7 @@ let login = (req,res) => {
             console.log(err);
         }
         else {
-            console.log('res: '+result);
+            console.log('Logion Func, result:  : '+result);
            
             res.send(result);
         }
