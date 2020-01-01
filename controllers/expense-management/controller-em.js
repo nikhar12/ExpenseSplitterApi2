@@ -98,7 +98,7 @@ let AddExpense = (req,res) =>{
             res.send(err);
 
         }else {
-            console.log(result);
+            console.log('result: eml: '+result);
             
 res.send(result);
         
