@@ -66,10 +66,11 @@ GroupModel.findOne({'groupid':groupid}, (err,result)=>{
     else
     {
         let res2 = [];
-        console.log('getAllUsersForAGroup :'+result);
+        console.log('getAllUsersForAGroup :'+ result);
        
             UserModel.find({'userid': {'$in': result.users}})
             .then(user=>{
+                console.log('user object :'+ user);
                 res.send(user);
             })           
            // console.log('userid: '+userid);
