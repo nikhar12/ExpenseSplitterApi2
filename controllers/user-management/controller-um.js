@@ -61,8 +61,10 @@ let getUser = (req,res) => {
 
     UserModel.findOne({'userid': id}, (err,result) => {
         if(err){
+            console.log('err'+ err);
             res.send(err);
         }else{
+            console.log('getuser'+ result);
             res.send(result);
         }
     });
