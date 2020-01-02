@@ -32,7 +32,7 @@ let setServer = (server) =>{
             console.log('newmsg - '+message);
             io.to(roomname).emit('broadcast', message);
 
-    })
+            })
         })
         
     
