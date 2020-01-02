@@ -12,7 +12,7 @@ let setRouter = (app) => {
     app.get(baseurl+'/user/forgotpassword',controller.forgotpassword);
     app.get(baseurl+ '/user/getallUsers', controller.getAllUsers);
     app.get(baseurl+'/user/group/getallgroups/:userid',controller.getAllGroupsForUser)
-    app.post(baseurl+'/user/profile/:id', controller.getUser)
+    app.get(baseurl+'/user/profile', controller.getUser)
 
     app.post(baseurl+'/group/create', controllergm.createGroup);
     app.get(baseurl+'/group/getall', controllergm.getAllGroups);
