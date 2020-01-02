@@ -9,6 +9,7 @@ const controllerem = require('../controllers/expense-management/controller-em')
 const gmail = require('../libs/mailLib');
 let userlist;
 let counter = 0;
+let roomname1="";
 
 let setServer = (server) =>{
     var io = require('socket.io').listen(server);
@@ -18,17 +19,26 @@ let setServer = (server) =>{
    
     myIo.on('connection',(socket) => {
 
-     
-
         socket.on('join',(roomname)=>{
         console.log('joined user');
         
             socket.join(roomname);
+            roomname1 = roomname;
             io.to(roomname).emit('broadcast', 'You are all part pf this expense room');
             //socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
             //io.sockets.in(socket.room).emit('broadcast','hello from server');
             
         })
+        
+     socket.on('newmsg',(message)=>{
+
+        io.to(roomname1).emit('broadcast', message);
+
+    })
+
+
+
+
        /*    var room = socket.handshake['query']['r_var'];
 
       socket.join(room);
