@@ -32,7 +32,7 @@ let setServer = (server) =>{
         })
          socket.on('newmsg',(message)=>{
             console.log('newmsg - '+message);
-            io.to(roomname).emit('broadcast', message);
+            io.to(roomname1).emit('broadcast', message);
 
             });
     
