@@ -57,7 +57,7 @@ let signup = (req,res) => {
 }
 
 let getUser = (req,res) => {
-    let id = req.query.id;
+    let id = req.params.id;
 
     UserModel.findOne({'userid': id}, (err,result) => {
         if(err){
