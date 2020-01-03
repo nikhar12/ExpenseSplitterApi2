@@ -27,15 +27,15 @@ let setServer = (server) =>{
             io.to(roomname).emit('broadcast', 'You are all part pf this expense room');
             //socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
             //io.sockets.in(socket.room).emit('broadcast','hello from server');
-             
+            socket.on('newmsg',(message)=>{
+                console.log('newmsg - '+message);
+                io.to(roomname).emit('broadcast', message);
+    
+                });
+        
            
         })
-         socket.on('newmsg',(message)=>{
-            console.log('newmsg - '+message);
-            io.to(roomname1).emit('broadcast', message);
-
-            });
-    
+        
 
 
 
