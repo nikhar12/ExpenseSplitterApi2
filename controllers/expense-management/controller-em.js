@@ -82,7 +82,7 @@ let AddExpense = (req,res) =>{
     let eml = new ExpenseModel({
         expenseid: expenseid,
         amount: totalExpenseAmount,
-        totalPaidBy: totalPaidBy,
+        totalpaidby: totalPaidBy,
         groupid: groupid,
         expensename: expenseName,
         createdby: userid,
