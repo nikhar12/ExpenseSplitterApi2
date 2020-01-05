@@ -7,6 +7,17 @@ const shortid = require('shortid');
 
 
 
+let deleteExpense = (req,res) => {
+    let expenseid = req.query.id;
+
+    ExpenseModel.deleteOne({'expenseid': expenseid}, (err, result)=>{
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    });
+}
 
 let getExpense= (req,res) => {
 
@@ -135,9 +146,12 @@ res.send(result);
 };
 
 
+
+
 module.exports = {
     AddExpense:AddExpense,
     getAllExpensesForGroup: getAllExpensesForGroup,
     getExpense: getExpense,
-    getAllUsersForAExpense: getAllUsersForAExpense
+    getAllUsersForAExpense: getAllUsersForAExpense,
+    deleteExpense: deleteExpense
 }
