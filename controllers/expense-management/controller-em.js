@@ -10,10 +10,12 @@ const shortid = require('shortid');
 let deleteExpense = (req,res) => {
     let expenseid = req.params.expenseid;
 
-    ExpenseModel.deleteOne({'expenseid': expenseid}, (err)=>{
+    ExpenseModel.deleteOne({'expenseid': expenseid}, (err,result)=>{
         if(err){
-            console.log('ERR: '+JSON.stringify(err));
+            //console.log('ERR: '+JSON.stringify(err));
             res.send(err);
+        }else{
+            res.send(result);
         }
     });
 }
