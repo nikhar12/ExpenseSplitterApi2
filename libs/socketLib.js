@@ -7,7 +7,7 @@ const eventEmitter = new events.EventEmitter();
 const ExpenseModel = mongoose.model('expense')
 const controllerem = require('../controllers/expense-management/controller-em')
 const gmail = require('../libs/mailLib');
-let userlist;
+let userlist = [];
 let counter = 0;
 let roomname1="";
 
@@ -21,8 +21,19 @@ let setServer = (server) =>{
 
         socket.on('join',(roomname)=>{
         console.log('joined user');
-        
+       
             socket.join(roomname);
+
+            socket.on('user',(data) => {
+                let temp = data.split(':');
+                let userinfo = {};
+                userinfo.userid = temp[0];
+                userinfo.lastname = temp[1];
+                userlist.push(userinfo);
+
+                socket.emit('OnlineList',userlist);
+
+            });
            // roomname1 = roomname;
             //io.to(roomname).emit('broadcast', 'You are all part pf this expense room');
             //socket.broadcast.to(socket.room).emit('broadcast','hiii frim server with roomname:'+roomname);
@@ -31,8 +42,9 @@ let setServer = (server) =>{
                 //console.log('newmsg - '+message);
                 socket.broadcast.to(roomname).emit('broadcast', message);
     
-                });
+            });
         
+            socket.on
            
         })
         
