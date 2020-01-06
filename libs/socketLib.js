@@ -30,9 +30,14 @@ let setServer = (server) =>{
                 let userinfo = {};
                 userinfo.userid = temp[0];
                 userinfo.lastname = temp[1];
-                userlist.push(userinfo);
+                let t = userlist.find(e=> e.userid===temp[0]);
+                if(!t){
+                    userlist.push(userinfo);
+                }
+                
+                
                 console.log('userlist in user on: '+ JSON.stringify(userlist));
-                                socket.emit('OnlineList',userlist);
+                socket.emit('OnlineList',userlist);
 
             });
            // roomname1 = roomname;
@@ -45,7 +50,24 @@ let setServer = (server) =>{
     
             });
         
-            socket.on
+            socket.on('disconnect', () => {
+                // disconnect the user from socket
+                // remove the user from online list
+                // unsubscribe the user from his own channel
+    
+                console.log("user is disconnected");
+                // console.log(socket.connectorName);
+                console.log(socket.userId);
+    
+    
+                var removeIndex = userlist.map(function(user) { return user.userid; }).indexOf(socket.userId);
+                allOnlineUsers.splice(removeIndex,1)
+                console.log(allOnlineUsers)
+    
+                socket.to(socket.room).broadcast.emit('online-user-list',allOnlineUsers);
+                socket.leave(socket.room);
+                
+            })
            
         })
         
