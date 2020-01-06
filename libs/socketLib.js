@@ -25,13 +25,14 @@ let setServer = (server) =>{
             socket.join(roomname);
 
             socket.on('user',(data) => {
+                console.log('user on data: '+ JSON.stringify(data));
                 let temp = data.split(':');
                 let userinfo = {};
                 userinfo.userid = temp[0];
                 userinfo.lastname = temp[1];
                 userlist.push(userinfo);
-
-                socket.emit('OnlineList',userlist);
+                console.log('userlist in user on: '+ JSON.stringify(userlist));
+                                socket.emit('OnlineList',userlist);
 
             });
            // roomname1 = roomname;
