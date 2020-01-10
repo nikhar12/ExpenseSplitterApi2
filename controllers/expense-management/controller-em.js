@@ -72,18 +72,22 @@ let AddExpense = (req,res) =>{
     let expenseid = shortid.generate();
     let userid = req.body.createdby;
     let archived = false;
-   
+    
     let users = req.body.users;
     let socketroom = shortid.generate();
     let array = [];
     console.log('users: '+users);
     let temp = users.split(',');
-  
+    let count = temp.length;
+    let b = totalExpenseAmount/count;
+
     for(let a of temp)
     {
+        
         let obj = {
             userid: a,
-            socketroom: socketroom
+            socketroom: socketroom,
+            amount: b
         }
        
         array.push(obj);

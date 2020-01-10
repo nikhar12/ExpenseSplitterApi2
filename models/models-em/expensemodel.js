@@ -18,7 +18,7 @@ let expenseSchema = new Schema({
     updatedby:[{userid:String, amount:Number}],
     // deletedby:String,
     isarchived: Boolean,
-    users:[{userid:String, socketroom:String}]
+    users:[{userid:String, socketroom:String,tobepaid:Number}]
     
     
 
