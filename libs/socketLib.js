@@ -52,6 +52,7 @@ let setServer = (server) =>{
         
             socket.on('disconnect', (userid) => {
                 userlist.map((value)=>{
+                    value+'';
                     if(value.split(':')[0] === userid){
                         value=null
                     }
