@@ -50,25 +50,26 @@ let setServer = (server) =>{
     
             });
         
-            socket.on('disconnect', (userid) => {
-                userlist.map((value)=>{
-                    value+'';
-                    if(value.split(':')[0] === userid){
-                        value=null
-                    }
-
-                })
-                // disconnect the user from socket
-                // remove the user from online list
-                // unsubscribe the user from his own channel
-    
-                console.log("user is disconnected");
-                // console.log(socket.connectorName);
-              
+           
             })
            
         })
         
+        socket.on('disconnect', (userid) => {
+            userlist.map((value)=>{
+                value+'';
+                if(value.split(':')[0] === userid){
+                    value=null
+                }
+
+            })
+            // disconnect the user from socket
+            // remove the user from online list
+            // unsubscribe the user from his own channel
+      
+            console.log("user is disconnected");
+            // console.log(socket.connectorName);
+          
 
 
 
