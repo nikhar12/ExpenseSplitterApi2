@@ -108,15 +108,15 @@ let AddExpense = (req,res) =>{
     });
 
 
-    eml.save((err,result)=>{
+    eml.save((err,result1)=>{
         if(err)
         {
             res.send(err);
 
         }else {
-            console.log('result: eml: '+JSON.stringify(result));
+            console.log('result: eml: '+JSON.stringify(result1));
             
-            //res.send(result);
+          
         
 
               let obj = {
@@ -137,7 +137,7 @@ let AddExpense = (req,res) =>{
                     res.send(err);
                 } else {
                     console.log('history succ '+JSON.stringify(result));
-                    res.send(result);
+                    res.send(result1);
                 }
             }) 
 
