@@ -76,7 +76,7 @@ let AddExpense = (req,res) =>{
     let users = req.body.users;
     let socketroom = shortid.generate();
     let array = [];
-    console.log('users: '+users);
+    console.log('users: '+JSON.stringify(users));
     let temp = users.split(',');
     let count = temp.length;
     let b = totalExpenseAmount/count;
@@ -92,7 +92,7 @@ let AddExpense = (req,res) =>{
        
         array.push(obj);
     }
-    console.log('array '+array);
+    console.log('array '+JSON.stringify(array));
 
 
     let eml = new ExpenseModel({
@@ -114,9 +114,9 @@ let AddExpense = (req,res) =>{
             res.send(err);
 
         }else {
-            console.log('result: eml: '+result);
+            console.log('result: eml: '+JSON.stringify(result));
             
-res.send(result);
+            res.send(result);
         
 
               let obj = {
@@ -133,10 +133,10 @@ res.send(result);
 
              hist.save((err,result)=>{
                 if(err){
-                    console.log('history err '+err);
+                    console.log('history err '+JSON.stringify(err));
                     res.send(err);
                 } else {
-                    console.log('history succ '+result);
+                    console.log('history succ '+JSON.stringify(result));
                     res.send(result);
                 }
             }) 
