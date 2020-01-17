@@ -116,7 +116,7 @@ let AddExpense = (req,res) =>{
         }else {
             console.log('result: eml: '+JSON.stringify(result));
             
-            res.send(result);
+            //res.send(result);
         
 
               let obj = {
