@@ -119,7 +119,7 @@ let AddExpense = (req,res) =>{
 res.send(result);
         
 
-            /*  let obj = {
+              let obj = {
                 userid: userid,
                 action: 'addExpense',
                 amount: totalExpenseAmount,
@@ -129,17 +129,17 @@ res.send(result);
             let hist = new ExpenseHistoryModel({
                 expenseid: expenseid,
                 history: obj
-            }); */
+            }); 
 
-            /* hist.save((err,result)=>{
+             hist.save((err,result)=>{
                 if(err){
-                    console.log('history '+err);
+                    console.log('history err '+err);
                     res.send(err);
                 } else {
                     console.log('history succ '+result);
                     res.send(result);
                 }
-            }) */
+            }) 
 
            
  
