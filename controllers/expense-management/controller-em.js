@@ -87,7 +87,7 @@ let AddExpense = (req,res) =>{
         let obj = {
             userid: a,
             socketroom: socketroom,
-            amount: b
+            tobepaid: b
         }
        
         array.push(obj);
