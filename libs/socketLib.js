@@ -53,7 +53,7 @@ let setServer = (server) =>{
            
             })
            
-            socket.on('disconnect', (userid) => {
+         /*    socket.on('disconnect', (userid) => {
                 userlist.map((value)=>{
                     value+'';
                     if(value.split(':')[0] === userid){
@@ -67,7 +67,7 @@ let setServer = (server) =>{
           
                 console.log("user is disconnected");
                 // console.log(socket.connectorName);
-        })
+        }) */
         
         
           

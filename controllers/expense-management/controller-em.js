@@ -136,7 +136,7 @@ let AddExpense = (req,res) =>{
                     console.log('history err '+JSON.stringify(err));
                     res.send(err);
                 } else {
-                    console.log('history succ '+JSON.stringify(result));
+                    console.log('history success '+JSON.stringify(result));
                     res.send(result1);
                 }
             }) 
