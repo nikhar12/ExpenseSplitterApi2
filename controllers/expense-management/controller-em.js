@@ -91,6 +91,7 @@ let AddExpense = (req,res) =>{
         }
        
         array.push(obj);
+        console.log('obj : '+obj);
     }
     console.log('array '+JSON.stringify(array));
 
